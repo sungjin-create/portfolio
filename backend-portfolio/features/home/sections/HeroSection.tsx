@@ -1,0 +1,51 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { SiGithub } from "react-icons/si";
+import Section from "@/shared/components/Section";
+import { profile } from "@/data/portfolio";
+
+export default function HeroSection() {
+  return (
+    <Section className="flex min-h-screen items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-5xl"
+      >
+        <p className="mb-6 text-sm font-medium tracking-wide text-zinc-500">
+          Backend Engineer
+        </p>
+
+        <h1 className="text-5xl font-semibold tracking-tight text-zinc-900 md:text-7xl">
+          안정적인 서비스를 만드는
+          <br />
+          백엔드 개발자
+        </h1>
+
+        <p className="mt-8 max-w-2xl text-xl leading-9 text-zinc-600">
+          {profile.description}
+        </p>
+
+        <div className="mt-12 flex gap-4">
+          <a
+            href="#projects"
+            className="rounded-full bg-zinc-900 px-7 py-3 text-sm font-medium text-white transition hover:bg-zinc-700"
+          >
+            프로젝트 보기
+          </a>
+
+          <a
+            href={profile.githubUrl}
+            target="_blank"
+            className="flex items-center gap-2 rounded-full border border-zinc-300 bg-white px-7 py-3 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50"
+          >
+            <SiGithub size={18} />
+            GitHub
+          </a>
+        </div>
+      </motion.div>
+    </Section>
+  );
+}
