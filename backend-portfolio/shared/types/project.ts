@@ -3,6 +3,38 @@ export type ProjectTechGroup = {
   items: string[];
 };
 
+export type ProjectTroubleItem = {
+  label: string;
+  text: string;
+};
+
+export type ProjectTroubleTable = {
+  title: string;
+  columns: string[];
+  rows: string[][];
+};
+
+export type ProjectTroubleshooting = {
+  title: string;
+  summary: string;
+  problem: ProjectTroubleItem[];
+  cause: ProjectTroubleItem[];
+  solution: {
+    title: string;
+    description: string;
+    points: string[];
+    code?: {
+      title: string;
+      language: string;
+      content: string;
+    };
+  }[];
+  result: string[];
+  resultTable?: ProjectTroubleTable;
+  analysis?: string[];
+  keywords: string[];
+};
+
 export type ProjectDetail = {
   slug: string;
   title: string;
@@ -20,13 +52,7 @@ export type ProjectDetail = {
     title: string;
     description: string;
   }[];
-  troubleshooting: {
-    title: string;
-    problem: string;
-    cause: string;
-    solution: string;
-    result: string;
-  }[];
+  troubleshooting: ProjectTroubleshooting[];
   performance?: {
     testTool: string;
     scenario: string;

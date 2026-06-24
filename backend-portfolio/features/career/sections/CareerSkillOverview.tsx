@@ -2,7 +2,7 @@ export default function CareerSkillOverview() {
   return (
     <section className="border-t border-zinc-200 py-20">
       <div className="mb-14">
-        <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-zinc-500">
+        <p className="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-[#5D7285]">
           Experience
         </p>
 
@@ -11,45 +11,13 @@ export default function CareerSkillOverview() {
         </h2>
       </div>
 
-      <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-white/90 shadow-sm ring-1 ring-white/70">
         <table className="w-full border-collapse">
           <tbody>
-            <Row
-              title="Backend"
-              skills={[
-                "Java",
-                "Spring Framework",
-                "JSP",
-              ]}
-            />
-
-            <Row
-              title="Database"
-              skills={[
-                "Oracle",
-                "PostgreSQL",
-                "SQL",
-              ]}
-            />
-
-            <Row
-              title="Integration"
-              skills={[
-                "ERP Interface",
-                "SAP",
-                "Workflow",
-              ]}
-            />
-
-            <Row
-              title="Tools"
-              skills={[
-                "SVN",
-                "Jenkins",
-                "DBeaver",
-                "Eclipse",
-              ]}
-            />
+            <Row title="Backend" skills={["Java", "Spring Framework", "JSP"]} />
+            <Row title="Database" skills={["Oracle", "PostgreSQL", "SQL"]} />
+            <Row title="Integration" skills={["ERP Interface", "SAP", "Workflow"]} />
+            <Row title="Tools" skills={["SVN", "Jenkins", "DBeaver", "Eclipse"]} />
           </tbody>
         </table>
       </div>
@@ -57,16 +25,10 @@ export default function CareerSkillOverview() {
   );
 }
 
-function Row({
-  title,
-  skills,
-}: {
-  title: string;
-  skills: string[];
-}) {
+function Row({ title, skills }: { title: string; skills: string[] }) {
   return (
     <tr className="border-b border-zinc-100 last:border-0">
-      <th className="w-56 bg-zinc-50 px-6 py-6 text-left text-sm font-semibold">
+      <th className="w-56 bg-[#F6FAFC] px-6 py-6 text-left text-sm font-semibold text-[#4A6678]">
         {title}
       </th>
 
@@ -75,16 +37,7 @@ function Row({
           {skills.map((skill) => (
             <span
               key={skill}
-              className="
-                rounded-full
-                border
-                border-zinc-200
-                bg-white
-                px-3
-                py-1
-                text-sm
-                font-medium
-              "
+              className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-sm font-medium text-zinc-700 transition hover:border-[#C7DDE8] hover:bg-[#F6FAFC] hover:text-[#4A6678]"
             >
               {skill}
             </span>

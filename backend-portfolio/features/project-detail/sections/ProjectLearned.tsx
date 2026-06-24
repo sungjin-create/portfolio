@@ -12,7 +12,7 @@ export default function ProjectLearned({ project }: ProjectLearnedProps) {
         {project.learned.map((item) => (
           <li
             key={item}
-            className="rounded-2xl border border-zinc-200 bg-white p-5 leading-7 text-zinc-700 shadow-sm"
+            className="rounded-2xl border border-zinc-200 bg-white/90 p-5 whitespace-pre-line leading-7 text-zinc-700 shadow-sm ring-1 ring-white/70 transition hover:border-[#C7DDE8]"
           >
             {item}
           </li>

@@ -16,8 +16,10 @@ export default function SkillsSection() {
         {skillGroups.map((group) => (
           <div
             key={group.category}
-            className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg"
+            className="rounded-3xl border border-zinc-200 bg-white/90 p-8 shadow-sm ring-1 ring-white/70 transition-all duration-300 hover:-translate-y-1 hover:border-[#C7DDE8] hover:shadow-lg"
           >
+            <div className="mb-5 h-1 w-10 rounded-full bg-[#B9D6E6]" />
+
             <h3 className="text-xl font-semibold text-zinc-900">
               {group.category}
             </h3>

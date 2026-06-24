@@ -10,26 +10,17 @@ export default function SectionHeader({
   description,
 }: SectionHeaderProps) {
   return (
-    <div className="mb-4">
-      <p className="mb-4 text-sm font-semibold uppercase tracking-[0.25em] text-zinc-500">
+    <div className="mb-12">
+      <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#5D7285]">
         {label}
       </p>
 
-      <h2 className="text-3xl font-semibold tracking-tight text-zinc-600 md:text-5xl">
+      <h2 className="text-3xl font-bold tracking-tight text-zinc-900 md:text-5xl">
         {title}
       </h2>
 
       {description && (
-        <p
-          className="
-            mt-5
-            max-w-4xl
-            whitespace-pre-line
-            text-lg
-            leading-8
-            text-zinc-600
-          "
-        >
+        <p className="mt-5 max-w-4xl whitespace-pre-line text-lg leading-8 text-zinc-600">
           {description}
         </p>
       )}

@@ -107,15 +107,15 @@ export const career = {
   technicalExperience: [
     {
       category: "Backend",
-      items: ["Java", "Spring Framework", "JSP", "업무 로직 개발"],
+      items: ["Java", "Spring Framework", "JSP"],
     },
     {
       category: "Database",
-      items: ["OracleDB", "PostgreSQL", "SQL", "데이터 정합성 검증"],
+      items: ["OracleDB", "PostgreSQL"],
     },
     {
       category: "Integration",
-      items: ["ERP Interface", "SAP S/4HANA", "Workflow", "Role Management"],
+      items: ["ERP Interface", "SAP S/4HANA"],
     },
     {
       category: "Tools",

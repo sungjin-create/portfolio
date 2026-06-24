@@ -1,14 +1,33 @@
 import { Project, Feature } from "@/shared/types/portfolio";
 
 export const profile = {
-  name: "RYU SUNGJIN",
-  role: "Backend Engineer",
-  headline: "안정적인 서버를 설계하는 백엔드 개발자",
+  name: "유성진",
+  role: "Backend Developer",
   description:
-    "주문, 결제, 재고, 이벤트 처리 시스템을 구현하며 동시성 제어와 트랜잭션 안정성에 집중합니다.",
-  githubUrl: "https://github.com",
-  email: "your-email@example.com",
+    "Java와 Spring 기반으로 주문, 결제, 재고, 이벤트 처리 시스템을 설계하고 구현합니다. \n 동시성 제어와 데이터 정합성에 관심이 많습니다.",
+  githubUrl: "https://github.com/sungjin-create",
+  email: "sungjinny5@naver.com",
 };
+
+export const featuredProjects: Project[] = [
+  {
+    slug: "limitedgoods",
+    title: "LimitedGoods",
+    desc: "Redis 재고 선점, Kafka 이벤트 처리, PostgreSQL 트랜잭션, K6 부하 테스트를 적용한 한정 상품 주문 시스템입니다.",
+    stack: ["Java", "Spring Boot", "Redis", "Kafka", "PostgreSQL", "K6"],
+    githubUrl: "https://github.com/sungjin-create/limitedgoods",
+  },
+];
+
+export const projects: Project[] = [
+  {
+    slug: "mentomate",
+    title: "MentoMate Service",
+    desc: "주문 생성, 결제 승인, 결제 확정 흐름을 분리한 결제 시스템 프로젝트입니다.",
+    stack: ["Spring", "JPA", "Transaction", "API Design"],
+    externalUrl: "https://app.notion.com/p/MENTOR-MATE-e1dc122c527d4a8ab22fe717e3ad66cd?source=copy_link",
+  },
+];
 
 export const features: Feature[] = [
   {
@@ -22,28 +41,6 @@ export const features: Feature[] = [
   {
     title: "Event Driven",
     desc: "Kafka 기반 비동기 이벤트 처리",
-  },
-];
-
-export const projects: Project[] = [
-  {
-    slug: "limitedgoods",
-    title: "LimitedGoods",
-    desc: "Redis 재고 선점, Kafka 이벤트 처리, PostgreSQL 트랜잭션, K6 부하 테스트를 적용한 한정 상품 주문 시스템입니다.",
-    stack: ["Java", "Spring Boot", "Redis", "Kafka", "PostgreSQL"],
-    githubUrl: "https://github.com",
-  },
-  {
-    slug: "payment-service",
-    title: "Payment Service",
-    desc: "주문 생성, 결제 승인, 결제 확정 흐름을 분리한 결제 시스템 프로젝트입니다.",
-    stack: ["Spring", "JPA", "Transaction", "API Design"],
-  },
-  {
-    slug: "job-tracker",
-    title: "Job Tracker",
-    desc: "채용공고 수집, 검색, 알림 기능을 제공하는 백엔드 중심 서비스입니다.",
-    stack: ["Nest.js", "TypeScript", "Elasticsearch"],
   },
 ];
 
@@ -81,16 +78,15 @@ export const skillGroups = [
 export const experiences = [
   {
     slug: "tobeway",
-    company: "MDM 솔루션 기업",
+    company: "TobeWay",
+    companyLabel: "MDM 솔루션 기업",
     role: "Backend Developer",
     period: "2024.06 - 2026.01",
     description:
       "Java, Spring Framework, JSP, Oracle, PostgreSQL 기반의 기준정보 관리 시스템 개발과 데이터 정비 업무를 수행했습니다.",
     highlights: [
-      "LG 에너지솔루션 NMDM 구축 프로젝트 참여",
-      "LG 팜한농 SAP S/4HANA 업그레이드 대응",
-      "기준정보 데이터 정비 및 인터페이스 개선",
-      "처리 시간 단축과 오류율 감소를 위한 로직 개선",
+      "LG 에너지솔루션 NMDM 구축 프로젝트 ",
+      "LG 팜한농 SAP S/4HANA 업그레이드 프로젝트",
     ],
   },
 ];

@@ -5,10 +5,10 @@ export type Project = {
   stack: string[];
   githubUrl?: string;
   demoUrl?: string;
+  externalUrl?: string;
 };
 
 export type Feature = {
   title: string;
   desc: string;
 };
-
