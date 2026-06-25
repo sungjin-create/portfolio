@@ -28,12 +28,12 @@ export default function ExperienceSection() {
           </p>
         </div>
 
-        <Link
+        {/* <Link
           href="/career"
           className="shrink-0 text-sm font-medium text-zinc-500 transition hover:text-[#4A6678] md:mt-10"
         >
           전체 경력 보기 →
-        </Link>
+        </Link> */}
       </div>
 
       <div className="space-y-6">
@@ -44,7 +44,7 @@ export default function ExperienceSection() {
             className="group block"
           >
             <article className="rounded-3xl border border-l-4 border-zinc-200 border-l-[#B9D6E6] bg-white/90 p-8 shadow-sm ring-1 ring-white/70 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[#C7DDE8] group-hover:shadow-lg">
-              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              <div className="flex flex-col gap-4">
                 <div>
                   <h3 className="flex flex-wrap items-center gap-3 text-2xl font-semibold text-zinc-900">
                     <span>{experience.company}</span>
@@ -55,15 +55,22 @@ export default function ExperienceSection() {
                       </span>
                     )}
                   </h3>
-
+                  <p className="mt-3 text-base font-semibold text-[#547084] md:text-lg">
+                    {experience.period.replace(" - ", " ~ ")}
+                    {experience.duration && (
+                      <span className="ml-2 text-sm font-medium text-zinc-500 md:text-base">
+                        · {experience.duration}
+                      </span>
+                    )}
+                  </p>
                   <p className="mt-2 text-lg font-medium text-zinc-700">
                     {experience.role}
                   </p>
                 </div>
 
-                <span className="rounded-full border border-[#D9E7EE] bg-[#F3F8FB] px-4 py-2 text-sm font-medium text-[#547084]">
+                {/* <span className="rounded-full border border-[#D9E7EE] bg-[#F3F8FB] px-4 py-2 text-sm font-medium text-[#547084]">
                   {experience.period}
-                </span>
+                </span> */}
               </div>
 
               <p className="mt-6 max-w-4xl leading-8 text-zinc-600">

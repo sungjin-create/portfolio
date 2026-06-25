@@ -36,10 +36,10 @@ export default async function Page({ params }: PageProps) {
       <ProjectHero project={project} />
       <ProjectOverview project={project} />
       <ProjectTechStack project={project} />
-      <ProjectArchitecture />
+      <ProjectArchitecture project={project} />
       <ProjectFeatures project={project} />
       <ProjectTroubleshooting project={project} />
-      <ProjectPerformance project={project} />
+      {/* <ProjectPerformance project={project} /> */}
       <ProjectLearned project={project} />
     </ProjectDetailLayout>
   );

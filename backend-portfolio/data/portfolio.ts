@@ -13,6 +13,7 @@ export const featuredProjects: Project[] = [
   {
     slug: "limitedgoods",
     title: "LimitedGoods",
+    period: "2026.05 - 2026.06",
     desc: "Redis 재고 선점, Kafka 이벤트 처리, PostgreSQL 트랜잭션, K6 부하 테스트를 적용한 한정 상품 주문 시스템입니다.",
     stack: ["Java", "Spring Boot", "Redis", "Kafka", "PostgreSQL", "K6"],
     githubUrl: "https://github.com/sungjin-create/limitedgoods",
@@ -23,9 +24,11 @@ export const projects: Project[] = [
   {
     slug: "mentomate",
     title: "MentoMate Service",
+    period: "2023.10 - 2023.11",
     desc: "주문 생성, 결제 승인, 결제 확정 흐름을 분리한 결제 시스템 프로젝트입니다.",
     stack: ["Spring", "JPA", "Transaction", "API Design"],
-    externalUrl: "https://app.notion.com/p/MENTOR-MATE-e1dc122c527d4a8ab22fe717e3ad66cd?source=copy_link",
+    externalUrl:
+      "https://app.notion.com/p/MENTOR-MATE-e1dc122c527d4a8ab22fe717e3ad66cd?source=copy_link",
   },
 ];
 
@@ -81,7 +84,8 @@ export const experiences = [
     company: "TobeWay",
     companyLabel: "MDM 솔루션 기업",
     role: "Backend Developer",
-    period: "2024.06 - 2026.01",
+    period: "2023.12 - 2026.01",
+    duration: "2년 2개월",
     description:
       "Java, Spring Framework, JSP, Oracle, PostgreSQL 기반의 기준정보 관리 시스템 개발과 데이터 정비 업무를 수행했습니다.",
     highlights: [

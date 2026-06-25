@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { CalendarDays, ExternalLink } from "lucide-react";
 import { Project } from "@/shared/types/portfolio";
 
 type ProjectCardProps = {
@@ -26,9 +26,18 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       className="group h-full rounded-[2rem] border border-zinc-200 bg-white/90 p-8 shadow-sm ring-1 ring-white/70 transition hover:-translate-y-2 hover:border-[#C7DDE8] hover:shadow-xl"
     >
       <div className="flex items-center justify-between gap-4">
-        <h3 className="text-2xl font-semibold text-zinc-900">
-          {project.title}
-        </h3>
+        <div>
+          <h3 className="text-2xl font-semibold text-zinc-900">
+            {project.title}
+          </h3>
+
+          {project.period && (
+            <p className="mt-2 flex items-center gap-2 text-sm font-medium text-[#547084]">
+              <CalendarDays size={16} className="text-blue-200" />
+              {project.period}
+            </p>
+          )}
+        </div>
 
         <ExternalLink
           size={20}

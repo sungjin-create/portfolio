@@ -42,11 +42,11 @@ export type ProjectDetail = {
   description: string;
   period: string;
   role: string;
+  projectType: string;
   techStack: string[];
+  architectureImage?: string;
   techGroups?: ProjectTechGroup[];
-
   githubUrl?: string;
-
   overview: string[];
   features: {
     title: string;

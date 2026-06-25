@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, CalendarDays, Star } from "lucide-react";
 import { Project } from "@/shared/types/portfolio";
 
 type FeaturedProjectCardProps = {
@@ -50,6 +50,13 @@ export default function FeaturedProjectCard({
         <h3 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
           {project.title}
         </h3>
+
+        {project.period && (
+          <p className="mt-3 flex items-center gap-2 text-sm font-medium text-[#547084]">
+            <CalendarDays size={16} className="text-blue-200" />
+            {project.period}
+          </p>
+        )}
 
         <p className="mt-4 line-clamp-3 text-sm leading-7 text-zinc-600">
           {project.desc}

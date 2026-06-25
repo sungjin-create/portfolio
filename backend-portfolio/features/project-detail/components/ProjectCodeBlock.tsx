@@ -32,7 +32,7 @@ export default async function ProjectCodeBlock({
   return (
     <div className="mt-5 overflow-hidden rounded-2xl border border-[#D9E7EE] bg-white shadow-sm">
       <div className="flex items-center justify-between border-b border-[#D9E7EE] bg-[#F6FAFC] px-4 py-3">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#5D7285]">
+        <p className="text-xs font-semibold tracking-[0.16em] text-[#5D7285]">
           {title}
         </p>
 

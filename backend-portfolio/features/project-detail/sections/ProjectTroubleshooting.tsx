@@ -18,7 +18,7 @@ export default function ProjectTroubleshooting({
       title="Troubleshooting"
       description="문제의 원인과 해결 과정을 기술적인 의사결정 중심으로 정리했습니다."
     >
-      <div className="space-y-8">
+      <div className="space-y-12">
         {project.troubleshooting.map((item) => (
           <article
             key={item.title}
@@ -51,13 +51,13 @@ export default function ProjectTroubleshooting({
               </div>
             </div>
 
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="mt-8 grid gap-4 md:grid-cols-2 whitespace-pre-line">
               <TroubleList title="Problem" items={item.problem} />
               <TroubleList title="Cause" items={item.cause} />
             </div>
 
             <div className="mt-8 space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5D7285]">
+              <p className="text-base font-bold uppercase tracking-[0.18em] text-[#5D7285]">
                 Solution
               </p>
 
@@ -112,7 +112,7 @@ export default function ProjectTroubleshooting({
 
             {item.analysis && (
               <div className="mt-6 rounded-2xl border border-[#D9E7EE] bg-[#F6FAFC] p-5">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#5D7285]">
+                <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#5D7285]">
                   Analysis
                 </p>
 
@@ -128,7 +128,7 @@ export default function ProjectTroubleshooting({
             )}
 
             <div className="mt-8 space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#5D7285]">
+              <p className="text-base font-bold uppercase tracking-[0.18em] text-[#5D7285]">
                 Effect
               </p>
 
@@ -172,7 +172,7 @@ function TroubleList({
             key={`${item.label}-${item.text}`}
             className="flex gap-3 leading-7 text-zinc-700"
           >
-            <span className="min-w-8 shrink-0 font-semibold text-[#547084]">
+            <span className="min-w-8 shrink-0 font-bold text-[#547084]">
               {item.label}.
             </span>
 

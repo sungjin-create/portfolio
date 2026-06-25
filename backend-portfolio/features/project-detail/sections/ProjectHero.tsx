@@ -30,7 +30,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
         {project.subtitle}
       </p>
 
-      <p className="mt-8 max-w-3xl whitespace-pre-line text-xl leading-9 text-zinc-600">
+      <p className="mt-8 max-w-5xl whitespace-pre-line text-xl leading-9 text-zinc-600">
         {project.description}
       </p>
 

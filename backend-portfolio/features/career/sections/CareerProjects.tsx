@@ -17,7 +17,7 @@ export default function CareerProjects() {
       <div className="space-y-8">
         {career.projects.map((project, index) => (
           <CareerCard key={project.title}>
-            <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+            <div className="flex flex-col gap-6">
               <div>
                 <p className="text-sm font-medium text-[#5D7285]">
                   Project {String(index + 1).padStart(2, "0")}
@@ -26,11 +26,10 @@ export default function CareerProjects() {
                 <h3 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
                   {project.title}
                 </h3>
+                <p className="mt-3 text-base font-semibold text-[#547084] md:text-lg">
+                  기간 : {project.period.replace(" - ", " ~ ")}
+                </p>
               </div>
-
-              <span className="rounded-full border border-[#D9E7EE] bg-[#F3F8FB] px-4 py-2 text-sm font-medium text-[#547084]">
-                {project.period}
-              </span>
             </div>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -45,6 +44,7 @@ export default function CareerProjects() {
               <p className="mt-3 leading-8 text-zinc-600">
                 {project.overview}
               </p>
+
             </div>
 
             <div className="mt-8 grid gap-8 md:grid-cols-2">

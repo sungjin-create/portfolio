@@ -1,31 +1,21 @@
+import { ProjectDetail } from "@/shared/types/project";
 import ProjectDetailSection from "../components/ProjectDetailSection";
 
-const flows = [
-  "Client",
-  "Order API",
-  "Redis Stock Reservation",
-  "Order DB",
-  "Kafka Event",
-  "Consumer",
-];
+type ProjectArchitectureProps = {
+  project: ProjectDetail;
+};
 
-export default function ProjectArchitecture() {
+export default function ProjectArchitecture({ project }: ProjectArchitectureProps) {
+  if (!project.architectureImage) return null;
+
   return (
     <ProjectDetailSection title="Architecture">
-      <div className="rounded-3xl border border-zinc-200 bg-white/90 p-8 shadow-sm ring-1 ring-white/70">
-        <div className="grid gap-4 md:grid-cols-6">
-          {flows.map((flow, index) => (
-            <div key={flow} className="flex items-center gap-4 md:block">
-              <div className="rounded-2xl border border-[#D9E7EE] bg-[#F6FAFC] px-4 py-5 text-center text-sm font-semibold text-[#4A6678]">
-                {flow}
-              </div>
-
-              {index < flows.length - 1 && (
-                <div className="text-blue-200 md:mt-4 md:text-center">→</div>
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-white/90 p-16 shadow-sm ring-1 ring-white/70 md:p-16">
+        <img
+          src={project.architectureImage}
+          alt={`${project.title} architecture diagram`}
+          className="w-full object-contain"
+        />
       </div>
     </ProjectDetailSection>
   );

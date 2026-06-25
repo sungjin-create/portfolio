@@ -9,6 +9,7 @@ export const projectDetails: ProjectDetail[] = [
             "동시 주문 상황에서 재고 초과 판매를 방지하기 위해 Redis, DB Lock, Kafka를 적용한 백엔드 프로젝트입니다.",
         period: "2026.05 - 2026.06",
         role: "Backend Developer",
+        projectType: "개인 프로젝트",
         techStack: [
             "Java",
             "Spring Boot",
@@ -19,6 +20,9 @@ export const projectDetails: ProjectDetail[] = [
             "Docker",
             "K6",
         ],
+        
+        architectureImage: "/images/limitedgoods-architecture.png",
+
         githubUrl: "https://github.com/sungjin-create/-limitedgoods",
 
         overview: [
@@ -220,7 +224,7 @@ export const projectDetails: ProjectDetail[] = [
             {
                 title: "결제 멱등성과 주문 확정 실패 문제",
                 summary:
-                    "결제 API는 사용자의 중복 클릭, 브라우저 새로고침, 네트워크 재시도 등으로 같은 요청이 여러 번 들어올 수 있습니다. 이때 요청마다 PG 결제를 호출하면 같은 주문에 대해 중복 결제가 발생할 수 있고, PG 결제는 성공했지만 내부 DB 처리에서 실패하면 결제는 완료됐지만 주문은 확정되지 않는 상태가 생길 수 있습니다.",
+                    "결제 API는 사용자의 중복 클릭, 브라우저 새로고침, 네트워크 재시도 등으로 같은 요청이 여러 번 들어올 수 있습니다. \n 이때 요청마다 PG 결제를 호출하면 같은 주문에 대해 중복 결제가 발생할 수 있고, PG 결제는 성공했지만 \n 내부 DB 처리에서 실패할 경우 결제는 완료됐지만 주문은 확정되지 않는 상태가 생길 수 있습니다.",
                 keywords: [
                     "Idempotency Key",
                     "Redis Lock",
@@ -234,7 +238,7 @@ export const projectDetails: ProjectDetail[] = [
                     },
                     {
                         label: "2",
-                        text: "PG 결제 성공 후 내부 주문 생성 또는 재고 차감 단계에서 실패하면 결제 상태와 주문 상태가 어긋날 수 있었습니다.",
+                        text: "PG 결제 성공 후 내부 주문 생성 또는 재고 차감 단계에서 실패하면 \n 결제 상태와 주문 상태가 어긋날 수 있었습니다.",
                     },
                     {
                         label: "3",
@@ -265,6 +269,21 @@ export const projectDetails: ProjectDetail[] = [
                             "처리 중인 요청이면 Redis lock으로 추가 진입을 차단했습니다.",
                             "결제 성공 후 응답을 Redis에 저장해 같은 요청에 동일 응답을 반환했습니다.",
                         ],
+                        code:{
+                            title: "Idempotency Key 기반 결제 멱등성",
+                            language: "java",
+                            content: `
+                                OrderResponseDto saved = paymentIdempotencyService.getSavedResponse(userId, orderId, idempotencyKey);
+                                if (saved != null) {
+                                    return saved;
+                                }
+
+                                boolean locked = paymentIdempotencyService.acquireLock(userId, orderId, idempotencyKey);
+                                if (!locked) {
+                                    throw new BusinessException(ErrorCode.DUPLICATE_PAYMENT_REQUEST);
+                                }
+                            `
+                        }
                     },
                     {
                         title: "결제 승인과 주문 확정 상태 분리",
@@ -275,6 +294,21 @@ export const projectDetails: ProjectDetail[] = [
                             "주문 확정 단계에서는 PAYMENT_APPROVED 상태의 주문만 재고 차감 후 PAID로 변경했습니다.",
                             "이미 PAID인 주문은 그대로 반환해 중복 재고 차감을 방지했습니다.",
                         ],
+                        code:{
+                            title: "결제 승인과 주문 확정 상태를 분리",
+                            language: "java",
+                            content: `
+                                // 7. 외부 PG(결제 대행사) 결제 승인 요청
+                                paymentService.pay(orderId, paymentInfo.totalPrice(), request);
+
+                                // 8. PG 승인 성공을 DB에 기록 (PAYMENT_APPROVED 상태로 전이)
+                                //    → 이후 내부 확정이 실패해도 이 상태를 기준으로 재시도 가능
+                                orderService.markPaymentApproved(userId, orderId);
+
+                                // 9. DB 재고 차감 및 주문 상태를 PAID로 확정
+                                OrderResponseDto response = retryFinalizeApprovedPayment(userId, orderId);
+                            `
+                        }
                     },
                 ],
                 result: [
@@ -287,7 +321,7 @@ export const projectDetails: ProjectDetail[] = [
             {
                 title: "Kafka 이벤트 유실과 중복 소비 문제",
                 summary:
-                    "주문 결제, 만료, 취소 같은 상태 변경이 발생하면 Kafka로 이벤트를 발행해야 합니다. 하지만 DB 상태 변경과 Kafka 발행은 하나의 원자적 작업으로 묶기 어렵기 때문에, DB 변경은 성공했지만 Kafka 발행이 실패하는 이벤트 유실 문제가 발생할 수 있습니다. 반대로 Kafka는 메시지를 최소 한 번 이상 전달할 수 있어 같은 이벤트가 중복 소비될 가능성도 있었습니다.",
+                    "주문 결제, 만료, 취소 같은 상태 변경이 발생하면 Kafka로 이벤트를 발행해야 합니다. \n 하지만 DB 상태 변경과 Kafka 발행은 하나의 원자적 작업으로 묶기 어렵기 때문에, DB 변경은 성공했지만 \n Kafka 발행이 실패하는 이벤트 유실 문제가 발생할 수 있습니다. \n반대로 Kafka는 메시지를 최소 한 번 이상 전달할 수 있어 같은 이벤트가 중복 소비될 가능성도 있었습니다.",
                 keywords: [
                     "Transactional Outbox",
                     "Kafka",
@@ -332,6 +366,24 @@ export const projectDetails: ProjectDetail[] = [
                             "별도 Publisher가 PENDING 또는 FAILED 상태의 Outbox 이벤트를 조회해 Kafka로 발행했습니다.",
                             "Kafka 발행 성공 시 PUBLISHED, 실패 시 FAILED로 상태를 저장해 재시도할 수 있게 했습니다.",
                         ],
+                        code:{
+                            title: "Outbox패턴을 이용해 Kafka 발행 관리",
+                            language: "java",
+                            content: `
+                                @Scheduled(fixedDelayString = "\${outbox.publish.delay}")
+                                public void publish() {
+                                    List<OutboxEvent> events =
+                                            outboxEventRepository.findTop100ByStatusInAndRetryCountLessThanOrderByCreatedAtAsc(
+                                                    List.of(OutboxEventStatus.PENDING, OutboxEventStatus.FAILED),
+                                                    RETRY_LIMIT
+                                            );
+
+                                    for (OutboxEvent event : events) {
+                                        publishOne(event);
+                                    }
+                                }
+                            `
+                        }
                     },
                     {
                         title: "ProcessedEvent 테이블로 중복 소비 방지",
@@ -342,6 +394,31 @@ export const projectDetails: ProjectDetail[] = [
                             "정상 처리된 이벤트는 ProcessedEvent 테이블에 저장했습니다.",
                             "Consumer Group 기준으로 처리 이력을 관리해 같은 이벤트의 중복 실행을 방지했습니다.",
                         ],
+                        code:{
+                            title: "ProcessedEvent 테이블을 이용한 중복 소비 방지",
+                            language: "java",
+                            content: `
+                                @Transactional
+                                public void consume(String message) throws JsonProcessingException {
+                                    KafkaEventEnvelope envelope =
+                                            objectMapper.readValue(message, KafkaEventEnvelope.class);
+
+                                    if (processedEventRepository.existsByEventIdAndConsumerGroup(
+                                            envelope.eventId(),
+                                            CONSUMER_GROUP
+                                    )) {
+                                        return;
+                                    }
+
+                                    processBusinessLogic(envelope);
+
+                                    processedEventRepository.save(
+                                            ProcessedEvent.create(envelope.eventId(), CONSUMER_GROUP)
+                                    );
+
+                                }
+                            `
+                        }
                     },
                 ],
                 result: [
@@ -364,9 +441,18 @@ export const projectDetails: ProjectDetail[] = [
         },
 
         learned: [
-            "DB 트랜잭션과 Redis 작업은 하나의 트랜잭션으로 묶이지 않으므로 보상 로직이 필요하다는 점을 학습했습니다.",
-            "Kafka는 Producer 성공 여부만으로 Consumer 동작을 보장할 수 없고, Consumer Group과 offset 확인이 중요하다는 점을 경험했습니다.",
-            "부하 테스트 결과는 단순 성공률보다 병목 원인을 함께 분석해야 의미가 있다는 점을 배웠습니다.",
+            `이번 프로젝트를 통해 백엔드 시스템에서 중요한 것은 단순 기능 구현보다 실패 상황에서도 데이터 정합성을 유지하는 설계라는 점을 배웠습니다.
+
+            한정 수량 상품 주문 기능을 구현하면서 동시 주문으로 인한 초과 판매, 중복 결제, 결제 성공 후 내부 처리 실패, Kafka 이벤트 유실과 중복 소비 문제를 고민했습니다. 특히 재고 동시성 문제에서는 비관적 락, 낙관적 락, Redis 방식을 비교했고, k6 성능 테스트를 통해 요청이 몰리는 상황에서는 Redis Lua Script 기반 원자 차감 방식이 더 안정적인 처리량을 보인다는 점을 확인했습니다.
+
+            결제 흐름에서는 Idempotency-Key를 사용해 중복 결제를 방지하고, PAYMENT_APPROVED 상태를 추가해 PG 결제 승인과 내부 주문 확정을 분리했습니다. 이를 통해 결제 성공 후 내부 처리에 실패하더라도 PG를 다시 호출하지 않고 주문 확정 단계만 재시도할 수 있도록 설계했습니다.
+
+            또한 Transactional Outbox와 ProcessedEvent를 적용하며 이벤트 기반 구조에서는 메시지 유실과 중복 소비를 전제로 설계해야 한다는 점을 배웠습니다. Kafka를 사용하는 것 자체보다, 실패했을 때 이벤트를 어떻게 추적하고 재처리할 수 있는지가 더 중요하다는 것을 체감했습니다.
+
+            아쉬운 점은 PostgreSQL, Redis, Kafka를 포함한 통합 테스트와 Redis 장애 상황에 대한 fallback 전략이 충분하지 않다는 점이었습니다. 앞으로는 Testcontainers 기반 통합 테스트, Outbox 재시도 정책 고도화, 장애 상황별 복구 전략까지 보완해보고 싶습니다.
+
+            이번 프로젝트는 기능 구현 중심에서 벗어나 동시성, 멱등성, 장애 복구, 이벤트 정합성을 고려하는 백엔드 설계 경험이었습니다. 
+            이를 통해 안정적으로 운영 가능한 시스템을 설계하는 개발자로 성장하고 싶다는 방향성을 더 분명히 할 수 있었습니다.`,
         ],
 
         techGroups: [
