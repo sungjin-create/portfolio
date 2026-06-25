@@ -9,14 +9,14 @@ export default function ProjectArchitecture({ project }: ProjectArchitectureProp
   if (!project.architectureImage) return null;
 
   return (
-    <ProjectDetailSection title="Architecture">
-      <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-white/90 p-16 shadow-sm ring-1 ring-white/70 md:p-16">
-        <img
-          src={project.architectureImage}
-          alt={`${project.title} architecture diagram`}
-          className="w-full object-contain"
-        />
-      </div>
-    </ProjectDetailSection>
+<ProjectDetailSection title="Architecture">
+  <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-zinc-200 bg-white/90 p-6 shadow-sm ring-1 ring-white/70 md:p-8">
+    <img
+      src={project.architectureImage}
+      alt={`${project.title} architecture diagram`}
+      className="mx-auto w-full max-w-3xl object-contain"
+    />
+  </div>
+</ProjectDetailSection>
   );
 }

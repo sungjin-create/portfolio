@@ -73,7 +73,7 @@ export default function ExperienceSection() {
                 </span> */}
               </div>
 
-              <p className="mt-6 max-w-4xl leading-8 text-zinc-600">
+              <p className="mt-6 max-w-4xl leading-8 text-zinc-600 whitespace-pre-line">
                 {experience.description}
               </p>
 

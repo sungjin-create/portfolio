@@ -25,8 +25,8 @@ export default function AboutSection() {
       >
         <SectionHeader
           label="About"
-          title="안정적인 구조를 고민합니다"
-          description="트랜잭션, 락, 이벤트 처리, 부하 테스트를 통해 실무형 백엔드 시스템을 만들어가고 있습니다."
+          title="커머스 백엔드의 안정적인 흐름을 고민합니다"
+          description={"주문 생성, 결제 승인, 재고 선점, 이벤트 발행처럼 상태 변화가 많은 도메인에서 \n 데이터 정합성과 장애 대응을 함께 고려하는 백엔드 개발자를 지향합니다."}
         />
       </motion.div>
 
@@ -56,7 +56,7 @@ export default function AboutSection() {
           >
             <div className="mb-6 text-blue-200">{icons[index]}</div>
             <h3 className="text-xl font-medium">{feature.title}</h3>
-            <p className="mt-3 text-zinc-400">{feature.desc}</p>
+            <p className="mt-3 text-zinc-400 whitespace-pre-line">{feature.desc}</p>
           </motion.div>
         ))}
       </div>

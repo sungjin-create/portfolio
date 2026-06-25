@@ -23,9 +23,9 @@ export default function HeroSection() {
         </h1>
 
         <p className="mt-8 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-5xl">
-          안정적인 서비스를 만드는
+          신뢰할 수 있는 거래 흐름을 설계하는
           <br />
-          백엔드 개발자
+          백엔드 개발자입니다.
         </p>
 
         <p className="mt-8 max-w-4xl text-xl whitespace-pre-line leading-9 text-zinc-600">

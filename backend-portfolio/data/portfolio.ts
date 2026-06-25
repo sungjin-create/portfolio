@@ -4,8 +4,7 @@ export const profile = {
   name: "유성진",
   role: "Backend Developer",
   description:
-    "Java와 Spring 기반으로 주문, 결제, 재고, 이벤트 처리 시스템을 설계하고 구현합니다. \n 동시성 제어와 데이터 정합성에 관심이 많습니다.",
-  githubUrl: "https://github.com/sungjin-create",
+    "엔터프라이즈 SI 환경에서 2년 2개월간 백엔드 개발을 경험하며 데이터 정합성과 업무 흐름을 다뤄왔습니다.\n이 경험을 바탕으로 주문, 결제, 재고, 이벤트 처리처럼 신뢰성이 중요한 커머스 백엔드 시스템을 깊게 \n학습하고 구현하고 있습니다.", githubUrl: "https://github.com/sungjin-create",
   email: "sungjinny5@naver.com",
 };
 
@@ -34,16 +33,16 @@ export const projects: Project[] = [
 
 export const features: Feature[] = [
   {
-    title: "API Design",
-    desc: "주문, 결제, 회원, 상품 API 설계",
+    title: "Order & Payment Flow",
+    desc: "주문 생성, 결제 승인, 결제 확정처럼 단계가 \n 나뉘는 거래 흐름을 명확한 상태와 책임으로 \n 설계합니다.",
   },
   {
     title: "Data Consistency",
-    desc: "트랜잭션, 락, 재고 정합성 처리",
+    desc: "트랜잭션, 락, 멱등성, 보상 처리를 고려해 \n 주문과 재고 데이터가 어긋나지 않도록 \n 설계합니다.",
   },
   {
-    title: "Event Driven",
-    desc: "Kafka 기반 비동기 이벤트 처리",
+    title: "Event Driven Processing",
+    desc: "Kafka와 Outbox 패턴을 활용해 주문 이후 \n 알림, 정산, 재고 처리 같은 후속 작업을 \n 안정적으로 분리합니다.",
   },
 ];
 
@@ -87,7 +86,7 @@ export const experiences = [
     period: "2023.12 - 2026.01",
     duration: "2년 2개월",
     description:
-      "Java, Spring Framework, JSP, Oracle, PostgreSQL 기반의 기준정보 관리 시스템 개발과 데이터 정비 업무를 수행했습니다.",
+      "엔터프라이즈 SI 환경에서 Java, Spring Framework 기반의 백엔드 개발을 수행했습니다. \n 기준정보 관리, 승인 Workflow, ERP 인터페이스 연동, 데이터 정합성 검증 업무를 통해 \n 안정적인 업무 처리 흐름과 데이터 검증 경험을 쌓았습니다.",
     highlights: [
       "LG 에너지솔루션 NMDM 구축 프로젝트 ",
       "LG 팜한농 SAP S/4HANA 업그레이드 프로젝트",
