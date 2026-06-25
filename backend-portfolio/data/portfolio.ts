@@ -24,8 +24,8 @@ export const projects: Project[] = [
     slug: "mentomate",
     title: "MentoMate Service",
     period: "2023.10 - 2023.11",
-    desc: "주문 생성, 결제 승인, 결제 확정 흐름을 분리한 결제 시스템 프로젝트입니다.",
-    stack: ["Spring", "JPA", "Transaction", "API Design"],
+    desc: "학습을 위해 멘토와 멘티를 매칭시켜주고 과제 관리를 할 수 있는 웹 어플리케이션입니다.",
+    stack: ["Java", "Spring", "JPA", "Redis", "WebSocket"],
     externalUrl:
       "https://app.notion.com/p/MENTOR-MATE-e1dc122c527d4a8ab22fe717e3ad66cd?source=copy_link",
   },
